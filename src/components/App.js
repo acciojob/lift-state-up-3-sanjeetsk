@@ -3,30 +3,46 @@ import React,{useState} from "react";
 import './../styles/App.css';
 
 const App = () => {
+  const [selectedOption, setSelectedOption] = useState('');
+
+  function handleSetOption(){
+    setSelectedOption('Option 1');
+  }
+
+  function handleSetOption1(){
+    setSelectedOption('Option 2');
+  }
+
   return (
     <div id="main">
-        <Comp parent="Parent Component" child1="Child Component 1" child2="Child Component 2" />
+      <div className="parent">
+        <h1>Parent Component</h1>
+        <Child1 handleSetOption={handleSetOption} />
+        <Child2 handleSetOption={handleSetOption1} />
+        <p>Selected Option: {selectedOption}</p>
+      </div>
     </div>
   )
 }
 
-const Comp = (props) => {
-    const [option, setOption] = useState('');
+const Child1 = ({handleSetOption}) => {
 
-    return(
-          <div className="parent">
-            <h1>{props.parent}</h1>
-            <div className="child1">
-              <h2>{props.child1}</h2>
-              <button onClick={() => setOption("Option 1")}>Option 1</button>
-            </div>
-            <div className="child2">
-              <h2>{props.child2}</h2>
-              <button onClick={() => setOption("Option 2")}>Option 2</button>
-            </div>
-            <p>Selected Option: {option}</p>
-          </div>
-    )
+  return(
+    <div className="child1">
+      <h2>Child Component 1</h2>
+      <button onClick={handleSetOption}>Option 1</button>
+    </div>
+  )
+}
+
+const Child2 = ({handleSetOption}) => {
+
+  return(
+    <div className="child2">
+      <h2>Child Component 2</h2>
+      <button onClick={handleSetOption}>Option 2</button>
+    </div>
+  )
 }
 
 export default App
