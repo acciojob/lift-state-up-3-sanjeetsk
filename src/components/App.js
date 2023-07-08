@@ -24,7 +24,7 @@ const Comp = (props) => {
               <h2>{props.child2}</h2>
               <button onClick={() => setOption("Option 2")}>Option 2</button>
             </div>
-            <h3>Selected Option: {option}</h3>
+            <p>Selected Option: {option}</p>
           </div>
     )
 }
